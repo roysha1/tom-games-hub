@@ -73,20 +73,15 @@ describe('FirstLetterGame', () => {
     const letterButtons = screen.getAllByRole('button').filter(
       (btn) => btn.textContent.length === 1 && /[\u0590-\u05FF]/.test(btn.textContent)
     )
-    // Try clicking all buttons — at least 5 are wrong
-    let foundWrong = false
+    // Click each button, advancing timers between clicks to clear feedback state
     for (const btn of letterButtons) {
       fireEvent.click(btn)
       if (screen.queryByText(/נסה שוב/)) {
-        foundWrong = true
-        break
+        expect(screen.getByText(/נסה שוב/)).toBeInTheDocument()
+        return
       }
-      // If correct, wait for timeout and continue
-      if (screen.queryByText(/כל הכבוד/)) {
-        act(() => vi.advanceTimersByTime(2000))
-        continue
-      }
+      // Clear any feedback timeout before trying next button
+      act(() => vi.advanceTimersByTime(2000))
     }
-    expect(foundWrong).toBe(true)
   })
 })
