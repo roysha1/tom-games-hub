@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react'
+import { useState } from 'react'
 import { PATTERN_COLORS } from '../data'
 import { playSuccess, playWrong, playClick } from '../sounds'
 import Confetti from './Confetti'
@@ -48,7 +48,7 @@ function PatternGame({ onBack }) {
   const [showConfetti, setShowConfetti] = useState(false)
   const [totalAnswered, setTotalAnswered] = useState(0)
 
-  const handleChoice = useCallback((choice, idx) => {
+  const handleChoice = (choice, idx) => {
     if (feedback) return
     playClick()
     setSelectedIdx(idx)
@@ -74,7 +74,7 @@ function PatternGame({ onBack }) {
         setSelectedIdx(null)
       }, 800)
     }
-  }, [pattern, feedback])
+  }
 
   return (
     <div className="min-h-[100dvh] bg-gradient-to-b from-indigo-300 to-violet-600 flex flex-col items-center px-3 py-3 md:p-4 gap-2 md:gap-4 relative">

@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useMemo } from 'react'
 import { OPPOSITES_BASIC, OPPOSITES_ADVANCED } from '../data'
 import { playSuccess, playWrong, playClick } from '../sounds'
 import Confetti from './Confetti'
@@ -43,7 +43,7 @@ function OppositesGame({ onBack }) {
     return shuffleArray([correct, ...distractors])
   }, [roundIndex, advanced])
 
-  const handleChoice = useCallback((choice, idx) => {
+  const handleChoice = (choice, idx) => {
     if (feedback) return
     playClick()
     setSelectedIdx(idx)
@@ -69,7 +69,7 @@ function OppositesGame({ onBack }) {
         setSelectedIdx(null)
       }, 800)
     }
-  }, [feedback])
+  }
 
   const toggleAdvanced = () => {
     setAdvanced((a) => !a)

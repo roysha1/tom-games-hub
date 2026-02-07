@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { SYLLABLE_WORDS } from '../data'
 import { playSuccess, playWrong, playClick } from '../sounds'
 import Confetti from './Confetti'
@@ -25,7 +25,7 @@ function SyllableGame({ onBack }) {
   const maxSyllables = 4
   const choices = Array.from({ length: maxSyllables }, (_, i) => i + 1)
 
-  const handleChoice = useCallback((num) => {
+  const handleChoice = (num) => {
     if (feedback) return
     playClick()
     setSelectedNum(num)
@@ -51,7 +51,7 @@ function SyllableGame({ onBack }) {
         setSelectedNum(null)
       }, 800)
     }
-  }, [currentWord, feedback, shuffledWords.length])
+  }
 
   // Render clapping hands for a number
   const renderClaps = (n) => '👏'.repeat(n)

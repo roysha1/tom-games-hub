@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { playSuccess, playWrong, playClick } from '../sounds'
 import Confetti from './Confetti'
 
@@ -62,7 +62,7 @@ function DinoMathGame({ onBack }) {
     [problem]
   )
 
-  const handleChoice = useCallback((num) => {
+  const handleChoice = (num) => {
     if (feedback) return
     playClick()
     setSelectedAnswer(num)
@@ -88,7 +88,7 @@ function DinoMathGame({ onBack }) {
         setSelectedAnswer(null)
       }, 800)
     }
-  }, [problem, feedback])
+  }
 
   return (
     <div className="min-h-[100dvh] bg-gradient-to-b from-lime-300 to-green-600 flex flex-col items-center px-3 py-3 md:p-4 gap-2 md:gap-4 relative">

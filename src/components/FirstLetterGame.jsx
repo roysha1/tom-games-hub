@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { WORDS, HEBREW_LETTERS, getFirstLetter, getLastLetter } from '../data'
 import { playSuccess, playWrong, playClick } from '../sounds'
 import Confetti from './Confetti'
@@ -38,8 +38,8 @@ function FirstLetterGame({ onBack }) {
     [wordIndex, mode]
   )
 
-  const handleLetterClick = useCallback((letter) => {
-    if (feedback) return // prevent double-click during feedback
+  const handleLetterClick = (letter) => {
+    if (feedback) return
     playClick()
     setSelectedLetter(letter)
 
@@ -54,7 +54,6 @@ function FirstLetterGame({ onBack }) {
         setShowConfetti(false)
         setFeedback(null)
         setSelectedLetter(null)
-        // Move to next word or cycle
         setWordIndex((i) => (i + 1) % shuffledWords.length)
       }, 1800)
     } else {
@@ -65,7 +64,7 @@ function FirstLetterGame({ onBack }) {
         setSelectedLetter(null)
       }, 800)
     }
-  }, [correctLetter, feedback])
+  }
 
   const toggleMode = () => {
     setMode((m) => m === 'first' ? 'last' : 'first')
