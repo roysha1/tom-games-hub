@@ -10,6 +10,7 @@ function ABCSoundsGame({ onBack }) {
 
   const handleLetterClick = (letter) => {
     playClick()
+    if (letter === selected) return
     setSelected(letter)
     const data = ALPHABET_DATA[letter]
     if (data) {
