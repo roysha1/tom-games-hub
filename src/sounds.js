@@ -37,3 +37,18 @@ export function playWrong() {
 export function playClick() {
   playTone(880, 0.08, 'sine', 0.15)
 }
+
+// Text-to-Speech for English ABC Sounds game
+export function playTTS(phrase) {
+  try {
+    if (!window.speechSynthesis) return
+    window.speechSynthesis.cancel()
+    const utterance = new SpeechSynthesisUtterance(phrase)
+    utterance.lang = 'en-US'
+    utterance.rate = 0.55
+    utterance.pitch = 1.1
+    window.speechSynthesis.speak(utterance)
+  } catch {
+    // TTS not available
+  }
+}

@@ -94,3 +94,34 @@ export const PATTERN_COLORS = [
   { name: 'סגול', color: '#A855F7', emoji: '🟣' },
   { name: 'כתום', color: '#F97316', emoji: '🟠' },
 ]
+
+// English ABC Sounds: letter → word, emoji, color placeholder, TTS phrase
+// A–E populated; F–Z are placeholders for now.
+export const ALPHABET_DATA = {
+  A: { word: 'Apple', emoji: '🍎', color: '#EF4444', ttsPhrase: "A is for Apple. A says Ah." },
+  B: { word: 'Ball', emoji: '⚽', color: '#3B82F6', ttsPhrase: "B is for Ball. B says Buh." },
+  C: { word: 'Cat', emoji: '🐱', color: '#F59E0B', ttsPhrase: "C is for Cat. C says Cuh." },
+  D: { word: 'Dinosaur', emoji: '🦕', color: '#22C55E', ttsPhrase: "D is for Dinosaur. D says Duh!" },
+  E: { word: 'Elephant', emoji: '🐘', color: '#8B5CF6', ttsPhrase: "E is for Elephant. E says Eh." },
+  F: { word: 'Fish', emoji: '🐟', color: '#06B6D4', ttsPhrase: "F is for Fish. F says Fff." },
+  G: { word: 'Grape', emoji: '🍇', color: '#7C3AED', ttsPhrase: "G is for Grape. G says Guh." },
+  H: { word: 'Hat', emoji: '🎩', color: '#D97706', ttsPhrase: "H is for Hat. H says Hh." },
+  I: { word: 'Igloo', emoji: '🏠', color: '#EC4899', ttsPhrase: "I is for Igloo. I says Ih." },
+  J: { word: 'Jellyfish', emoji: '🪼', color: '#14B8A6', ttsPhrase: "J is for Jellyfish. J says Juh." },
+  K: { word: 'Kite', emoji: '🪁', color: '#F43F5E', ttsPhrase: "K is for Kite. K says Kuh." },
+  L: { word: 'Lion', emoji: '🦁', color: '#EAB308', ttsPhrase: "L is for Lion. L says Luh." },
+  M: { word: 'Moon', emoji: '🌙', color: '#6366F1', ttsPhrase: "M is for Moon. M says Mmm." },
+  N: { word: 'Nest', emoji: '🪺', color: '#84CC16', ttsPhrase: "N is for Nest. N says Nnn." },
+  O: { word: 'Octopus', emoji: '🐙', color: '#F97316', ttsPhrase: "O is for Octopus. O says Ah." },
+  P: { word: 'Penguin', emoji: '🐧', color: '#0EA5E9', ttsPhrase: "P is for Penguin. P says Puh." },
+  Q: { word: 'Queen', emoji: '👸', color: '#A855F7', ttsPhrase: "Q is for Queen. Q says Kwu." },
+  R: { word: 'Rainbow', emoji: '🌈', color: '#EF4444', ttsPhrase: "R is for Rainbow. R says Rrr." },
+  S: { word: 'Star', emoji: '⭐', color: '#FBBF24', ttsPhrase: "S is for Star. S says Sss." },
+  T: { word: 'Tree', emoji: '🌳', color: '#16A34A', ttsPhrase: "T is for Tree. T says Tuh." },
+  U: { word: 'Umbrella', emoji: '☂️', color: '#7C3AED', ttsPhrase: "U is for Umbrella. U says Uh." },
+  V: { word: 'Violin', emoji: '🎻', color: '#B45309', ttsPhrase: "V is for Violin. V says Vvv." },
+  W: { word: 'Whale', emoji: '🐋', color: '#2563EB', ttsPhrase: "W is for Whale. W says Wuh." },
+  X: { word: 'Fox', emoji: '🦊', color: '#DB2777', ttsPhrase: "X is for Fox. X says Ks." },
+  Y: { word: 'Yarn', emoji: '🧶', color: '#EA580C', ttsPhrase: "Y is for Yarn. Y says Yuh." },
+  Z: { word: 'Zebra', emoji: '🦓', color: '#171717', ttsPhrase: "Z is for Zebra. Z says Zzz." },
+}

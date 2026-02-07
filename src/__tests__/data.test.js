@@ -4,6 +4,7 @@ import {
   getFirstLetter, getLastLetter, getRawLastLetter,
   OPPOSITES_BASIC, OPPOSITES_ADVANCED,
   SYLLABLE_WORDS, PATTERN_COLORS,
+  ALPHABET_DATA,
 } from '../data'
 
 describe('getFirstLetter', () => {
@@ -131,5 +132,27 @@ describe('PATTERN_COLORS', () => {
       expect(c.color).toMatch(/^#[0-9A-Fa-f]{6}$/)
       expect(c.emoji).toBeTruthy()
     })
+  })
+})
+
+describe('ALPHABET_DATA', () => {
+  it('has all 26 letters', () => {
+    expect(Object.keys(ALPHABET_DATA)).toHaveLength(26)
+  })
+
+  it('every entry has word, emoji, color, and ttsPhrase', () => {
+    Object.entries(ALPHABET_DATA).forEach(([letter, data]) => {
+      expect(data.word).toBeTruthy()
+      expect(data.emoji).toBeTruthy()
+      expect(data.color).toMatch(/^#[0-9A-Fa-f]{6}$/)
+      expect(data.ttsPhrase).toContain(letter)
+      expect(data.ttsPhrase).toContain(data.word)
+    })
+  })
+
+  it('keys are uppercase A-Z', () => {
+    const keys = Object.keys(ALPHABET_DATA)
+    const expected = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+    expect(keys).toEqual(expected)
   })
 })

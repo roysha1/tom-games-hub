@@ -8,13 +8,14 @@ describe('HomeScreen', () => {
     expect(screen.getByText(/המשחק של טום/)).toBeInTheDocument()
   })
 
-  it('renders all 5 game buttons', () => {
+  it('renders all 6 game buttons', () => {
     render(<HomeScreen onSelectGame={() => {}} />)
     expect(screen.getByText('אות ראשונה ואחרונה')).toBeInTheDocument()
     expect(screen.getByText('הפכים')).toBeInTheDocument()
     expect(screen.getByText('ספירת הברות')).toBeInTheDocument()
     expect(screen.getByText('דינו-חשבון')).toBeInTheDocument()
     expect(screen.getByText('השלמת דפוסים')).toBeInTheDocument()
+    expect(screen.getByText('ABC Sounds')).toBeInTheDocument()
   })
 
   it('calls onSelectGame with "firstLetter" when clicking first letter button', () => {
@@ -50,5 +51,12 @@ describe('HomeScreen', () => {
     render(<HomeScreen onSelectGame={onSelectGame} />)
     fireEvent.click(screen.getByText('השלמת דפוסים'))
     expect(onSelectGame).toHaveBeenCalledWith('pattern')
+  })
+
+  it('calls onSelectGame with "abcSounds" when clicking ABC Sounds button', () => {
+    const onSelectGame = vi.fn()
+    render(<HomeScreen onSelectGame={onSelectGame} />)
+    fireEvent.click(screen.getByText('ABC Sounds'))
+    expect(onSelectGame).toHaveBeenCalledWith('abcSounds')
   })
 })

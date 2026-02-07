@@ -5,6 +5,7 @@ import OppositesGame from './components/OppositesGame'
 import SyllableGame from './components/SyllableGame'
 import DinoMathGame from './components/DinoMathGame'
 import PatternGame from './components/PatternGame'
+import ABCSoundsGame from './components/ABCSoundsGame'
 
 function App() {
   const [screen, setScreen] = useState('home')
@@ -30,6 +31,9 @@ function App() {
       )}
       {screen === 'pattern' && (
         <PatternGame onBack={() => setScreen('home')} />
+      )}
+      {screen === 'abcSounds' && (
+        <ABCSoundsGame onBack={() => setScreen('home')} />
       )}
     </div>
   )

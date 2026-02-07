@@ -66,7 +66,7 @@ function HomeScreen({ onSelectGame }) {
         {/* Pattern Completion */}
         <button
           onClick={() => onSelectGame('pattern')}
-          className="col-span-2 sm:col-span-1 bg-gradient-to-br from-indigo-400 to-violet-600 hover:from-indigo-500 hover:to-violet-700 
+          className="bg-gradient-to-br from-indigo-400 to-violet-600 hover:from-indigo-500 hover:to-violet-700 
                      text-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-2xl 
                      hover:scale-105 active:scale-95 transition-all duration-200
                      flex flex-col items-center gap-2 md:gap-3 cursor-pointer border-3 md:border-4 border-white/30"
@@ -74,6 +74,19 @@ function HomeScreen({ onSelectGame }) {
           <span className="text-3xl md:text-5xl">🔴🔵🟢</span>
           <span className="text-base sm:text-lg md:text-2xl font-extrabold leading-tight text-center">השלמת דפוסים</span>
           <span className="text-xs md:text-sm text-white/80 hidden sm:block">מה בא אחר כך?</span>
+        </button>
+
+        {/* English ABC Sounds */}
+        <button
+          onClick={() => onSelectGame('abcSounds')}
+          className="bg-gradient-to-br from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 
+                     text-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-2xl 
+                     hover:scale-105 active:scale-95 transition-all duration-200
+                     flex flex-col items-center gap-2 md:gap-3 cursor-pointer border-3 md:border-4 border-white/30"
+        >
+          <span className="text-3xl md:text-5xl">🔤</span>
+          <span className="text-base sm:text-lg md:text-2xl font-extrabold leading-tight text-center" dir="ltr">ABC Sounds</span>
+          <span className="text-xs md:text-sm text-white/80 hidden sm:block">!לימוד אותיות באנגלית</span>
         </button>
       </div>
 

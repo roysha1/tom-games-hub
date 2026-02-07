@@ -23,3 +23,12 @@ class MockAudioContext {
 
 globalThis.AudioContext = MockAudioContext
 globalThis.webkitAudioContext = MockAudioContext
+
+// Mock speechSynthesis API
+globalThis.speechSynthesis = {
+  cancel: () => {},
+  speak: () => {},
+}
+globalThis.SpeechSynthesisUtterance = class {
+  constructor(text) { this.text = text }
+}
