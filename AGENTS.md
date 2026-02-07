@@ -24,7 +24,9 @@ letter_games/
 │   ├── index.css                     # Tailwind import + custom animations
 │   ├── App.jsx                       # Screen router (home / firstLetter / opposites / syllables / dinoMath / pattern)
 │   ├── data.js                       # Word list, Hebrew letters, letter utilities, syllable & pattern data
+│   ├── utils.js                      # Shared game logic (shuffle, generateProblem, generatePattern, etc.)
 │   ├── sounds.js                     # Placeholder sound effect functions
+│   ├── setupTests.js                 # Test setup (jest-dom + Web Audio mock)
 │   └── components/
 │       ├── HomeScreen.jsx            # Landing page ("המשחק של טום")
 │       ├── FirstLetterGame.jsx       # First/Last letter game with full logic
@@ -94,4 +96,15 @@ letter_games/
 - [x] Success/error animations (confetti, shake, stars)
 - [x] Sound effects via Web Audio API
 - [x] 15 Hebrew words in word bank
+- [x] Test suite (Vitest + React Testing Library, 78 tests)
 - [ ] Replace emoji placeholders with real images
+
+## Testing
+- **Framework:** Vitest v4 with jsdom environment
+- **Libraries:** @testing-library/react, @testing-library/jest-dom, @testing-library/user-event
+- **Setup:** `src/setupTests.js` — jest-dom matchers + Web Audio API mock
+- **Config:** Vitest config in `vite.config.js` (`test` field)
+- **Run:** `npm test` (single run) or `npm run test:watch` (watch mode)
+- **Structure:** Tests in `src/__tests__/` — unit tests for data/logic, component tests for each screen
+- **Shared logic:** Extracted to `src/utils.js` — `shuffleArray`, `pickLetterChoices`, `generateProblem`, `generateChoices`, `generatePattern`
+- **Sound mocking:** Component tests mock `../sounds` module to avoid Web Audio API issues

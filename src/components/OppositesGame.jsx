@@ -1,16 +1,8 @@
 import { useState, useMemo } from 'react'
 import { OPPOSITES_BASIC, OPPOSITES_ADVANCED } from '../data'
+import { shuffleArray } from '../utils'
 import { playSuccess, playWrong, playClick } from '../sounds'
 import Confetti from './Confetti'
-
-function shuffleArray(arr) {
-  const shuffled = [...arr]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}
 
 function OppositesGame({ onBack }) {
   const [advanced, setAdvanced] = useState(false)

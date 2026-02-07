@@ -1,22 +1,8 @@
 import { useState, useMemo } from 'react'
-import { WORDS, HEBREW_LETTERS, getFirstLetter, getLastLetter } from '../data'
+import { WORDS, getFirstLetter, getLastLetter } from '../data'
+import { shuffleArray, pickLetterChoices } from '../utils'
 import { playSuccess, playWrong, playClick } from '../sounds'
 import Confetti from './Confetti'
-
-function shuffleArray(arr) {
-  const shuffled = [...arr]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}
-
-function pickLetterChoices(correctLetter, count = 6) {
-  const others = HEBREW_LETTERS.filter((l) => l !== correctLetter)
-  const shuffledOthers = shuffleArray(others).slice(0, count - 1)
-  return shuffleArray([correctLetter, ...shuffledOthers])
-}
 
 function FirstLetterGame({ onBack }) {
   const [wordIndex, setWordIndex] = useState(0)

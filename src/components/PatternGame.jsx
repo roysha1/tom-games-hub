@@ -1,44 +1,7 @@
 import { useState } from 'react'
-import { PATTERN_COLORS } from '../data'
+import { generatePattern } from '../utils'
 import { playSuccess, playWrong, playClick } from '../sounds'
 import Confetti from './Confetti'
-
-function shuffleArray(arr) {
-  const shuffled = [...arr]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}
-
-function generatePattern() {
-  // Pick 2-3 distinct colors for the repeating unit
-  const shuffled = shuffleArray(PATTERN_COLORS)
-  const unitLen = Math.random() > 0.5 ? 2 : 3
-  const unit = shuffled.slice(0, unitLen)
-
-  // Repeat the unit to create a sequence of 5-7 items, then the answer is the next
-  const repeatCount = unitLen === 2 ? 3 : 2
-  const fullSeq = []
-  for (let r = 0; r < repeatCount + 1; r++) {
-    for (let i = 0; i < unit.length; i++) {
-      fullSeq.push(unit[i])
-    }
-  }
-
-  // Show part of the sequence, answer is the next item
-  const visibleLen = unitLen * repeatCount + (unitLen - 1) // show enough to see the pattern + one missing
-  const visible = fullSeq.slice(0, visibleLen)
-  const answer = fullSeq[visibleLen]
-
-  // Generate choices: the correct answer + 3 random other colors
-  const otherColors = PATTERN_COLORS.filter((c) => c.name !== answer.name)
-  const distractors = shuffleArray(otherColors).slice(0, 3)
-  const choices = shuffleArray([answer, ...distractors])
-
-  return { visible, answer, choices }
-}
 
 function PatternGame({ onBack }) {
   const [pattern, setPattern] = useState(() => generatePattern())
