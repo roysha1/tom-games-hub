@@ -1,42 +1,7 @@
 import { useState, useMemo } from 'react'
+import { generateProblem, generateChoices } from '../utils'
 import { playSuccess, playWrong, playClick } from '../sounds'
 import Confetti from './Confetti'
-
-function shuffleArray(arr) {
-  const shuffled = [...arr]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}
-
-function generateProblem() {
-  const isAddition = Math.random() > 0.3
-  if (isAddition) {
-    const a = Math.floor(Math.random() * 9) + 1 // 1-9
-    const b = Math.floor(Math.random() * (10 - a)) + 1 // ensure sum <= 10
-    return { a, b, op: '+', answer: a + b }
-  } else {
-    const answer = Math.floor(Math.random() * 9) // 0-8
-    const b = Math.floor(Math.random() * (10 - answer)) + 1 // 1 to (10-answer)
-    const a = answer + b // a is always > b, result >= 0
-    return { a, b, op: '−', answer }
-  }
-}
-
-function generateChoices(correct) {
-  const choices = new Set([correct])
-  while (choices.size < 4) {
-    // Generate nearby wrong answers
-    const offset = Math.floor(Math.random() * 5) - 2 // -2 to +2
-    const wrong = correct + offset
-    if (wrong >= 0 && wrong <= 10 && wrong !== correct) {
-      choices.add(wrong)
-    }
-  }
-  return shuffleArray([...choices])
-}
 
 // Render dino emojis for a count
 function DinoRow({ count }) {
